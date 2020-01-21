@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import uuid from 'uuid/v1';
-import { Todo, TodoContext } from './contexts/TodosContext';
+import { Todo, TodoContext } from '../contexts/TodosContext';
 
 const App: React.FC = () => {
   const { todos, addTodo } = useContext(TodoContext) as any;
   const addNewTodo = () => {
-    addTodo({ description: 'Simple todo', done: false, id: uuid() });
+    const id = uuid();
+    addTodo({ description: `Another todo - ${id.split('-')[0]}`, done: false, id: id });
   };
 
   return (
