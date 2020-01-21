@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
-import uuid from 'uuid/v1';
 import { Todo, TodoContext } from '../contexts/TodosContext';
 import './App.css';
 import { Checkbox } from './checkbox/Checkbox';
+import { TodoForm } from './todo-form/TodoForm';
 
 const App: React.FC = () => {
-  const { todos, addTodo, toggleTodo } = useContext(TodoContext) as any;
-  const addNewTodo = () => {
-    const id = uuid();
-    addTodo({ description: `Another todo - ${id.split('-')[0]}`, done: false, id: id });
-  };
+  const { todos, toggleTodo } = useContext(TodoContext) as any;
 
   return (
-    <div>
+    <div className="container">
       <h1>List of todos</h1>
       <ul>
         {todos.map((todo: Todo) => {
@@ -27,7 +23,7 @@ const App: React.FC = () => {
         })}
       </ul>
 
-      <button onClick={addNewTodo}>Add new todo</button>
+      <TodoForm />
     </div>
   );
 }
