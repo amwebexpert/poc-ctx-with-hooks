@@ -27,9 +27,17 @@ export const TodoContextProvider = (props: Readonly<any>) => {
         const newTodo: Todo = { ...todo, id: uuid() };
         setTodos([...todos, newTodo]);
     };
+    const toggleTodo = (id: string) => {
+        const newTodos = [...todos];
+        const todo = newTodos.find(todo => todo.id === id);
+        if (todo) {
+            todo.done = !todo.done;
+        }
+        setTodos(newTodos);
+    };
 
     return (
-        <TodoContext.Provider value={{ todos, addTodo } as any}>
+        <TodoContext.Provider value={{ todos, addTodo, toggleTodo } as any}>
             {props.children}
         </TodoContext.Provider>
     );

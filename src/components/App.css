@@ -1,0 +1,11 @@
+.todo {
+    list-style: none;
+}
+
+.todo .completed {
+    text-decoration: line-through;
+}
+
+.todo .not-completed {
+    text-decoration: none;
+}
